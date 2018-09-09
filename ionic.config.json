@@ -1,0 +1,7 @@
+{
+  "name": "kmerbuilders",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
