@@ -7,8 +7,44 @@
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<div text center>
+  <h2>Kmer Builders</h2>
+
+<ion-list>
+  <ion-searchbar (ionInput)="getItems($event)">Technician
+  </ion-searchbar>
+  <ion-select [(ngModel)]="gaming">
+      <ion-option value="nes">NES</ion-option>
+      <ion-option value="n64">Nintendo64</ion-option>
+      <ion-option value="ps">PlayStation</ion-option>
+      <ion-option value="genesis">Sega Genesis</ion-option>
+      <ion-option value="saturn">Sega Saturn</ion-option>
+      <ion-option value="snes">SNES</ion-option>
+    </ion-select>
+  <ion-item *ngFor="let item of items">
+    {{ item }}
+  </ion-item>
+
+</ion-list>
+
+<button ion-button color="red" outline>Search</button>
+
+<p>Browse Technicians</p>
+
+<p>Are you a Technician?</p>
+
+<ion-footer>
+<ion-toolbar>
+  <div>
+    <p>Create an account</p>
+  </div>
+     <p>Login</p>
+  <div>
+  </div>
+</ion-toolbar>
+</ion-footer>
+
+
+</div>
+
 </ion-content>

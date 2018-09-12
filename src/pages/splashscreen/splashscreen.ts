@@ -29,7 +29,7 @@ export class SplashscreenPage {
 
     setTimeout(() => {
       this.viewCtrl.dismiss();
-    }, 10000);
+    }, 5000);
 
   }
 
