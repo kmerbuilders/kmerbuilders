@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <div text center>
-  <form  [formGroup]="form">
+  <form (ngSubmit)="signupUser()" [formGroup]="form">
     <ion-list inset>
 
       <ion-item>
@@ -44,11 +44,12 @@
 
 
     </ion-list>
+    </form>
 
     <div padding-horizontal>
       <button ion-button full (click)="goToInfo()">NEXT</button>
     </div>
-  </form>
+
 
   <ion-footer>
   <ion-toolbar>

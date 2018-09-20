@@ -11,6 +11,11 @@ import { SignupPage } from '../pages/signup/signup';
 import { PersonalinfoPage } from '../pages/personalinfo/personalinfo';
 import { SplashscreenPage } from '../pages/splashscreen/splashscreen';
 
+import { UserModel } from '../model/user.model';
+import { UserProvider } from '../providers/user/user';
+
+
+
 import { firebaseConfig } from '../config';
 
 @NgModule({
