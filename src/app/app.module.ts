@@ -6,6 +6,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
+import { SignupPage } from '../pages/signup/signup';
+import { PersonalinfoPage } from '../pages/personalinfo/personalinfo';
 import { SplashscreenPage } from '../pages/splashscreen/splashscreen';
 
 import { firebaseConfig } from '../config';
@@ -14,7 +17,10 @@ import { firebaseConfig } from '../config';
   declarations: [
     MyApp,
     HomePage,
-    SplashscreenPage
+    SplashscreenPage,
+    LoginPage,
+    SignupPage,
+    PersonalinfoPage
   ],
   imports: [
     BrowserModule,
@@ -24,7 +30,10 @@ import { firebaseConfig } from '../config';
   entryComponents: [
     MyApp,
     HomePage,
-    SplashscreenPage
+    SplashscreenPage,
+    LoginPage,
+    SignupPage,
+    PersonalinfoPage
   ],
   providers: [
     StatusBar,

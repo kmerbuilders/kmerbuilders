@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { LoginPage } from '../login/login';
+import { SignupPage } from '../signup/signup';
 
 
 @Component({
@@ -8,7 +10,13 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
+    tab1: any;
+  tab2: any;
+
   constructor(public navCtrl: NavController) {
+
+    this.tab1 = LoginPage;
+    this.tab2 = SignupPage;
 
   }
 

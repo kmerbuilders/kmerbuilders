@@ -35,12 +35,11 @@
 
 <ion-footer>
 <ion-toolbar>
-  <div>
-    <p>Create an account</p>
-  </div>
-     <p>Login</p>
-  <div>
-  </div>
+  <ion-tabs>
+      <ion-tab tabIcon="star" [root]="tab2">Create Account</ion-tab>
+      <ion-tab tabIcon="heart" [root]="tab1">Login</ion-tab>
+
+    </ion-tabs>`
 </ion-toolbar>
 </ion-footer>
 
