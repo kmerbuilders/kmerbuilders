@@ -10,14 +10,21 @@ import { SignupPage } from '../signup/signup';
 })
 export class HomePage {
 
-    tab1: any;
-  tab2: any;
 
   constructor(public navCtrl: NavController) {
 
-    this.tab1 = LoginPage;
-    this.tab2 = SignupPage;
 
   }
+
+  openSignup()
+  {
+    this.navCtrl.setRoot(SignupPage);
+  }
+
+ openLogin()
+ {
+   this.navCtrl.setRoot(LoginPage);
+ }
+
 
 }

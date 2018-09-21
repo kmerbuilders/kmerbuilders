@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Slides } from 'ionic-angular';
 import { IonicPage, NavController, NavParams,AlertController,LoadingController,Loading  } from 'ionic-angular';
 import { PersonalinfoPage } from '../personalinfo/personalinfo';
+import { LoginPage } from '../login/login';
+import { EmailValidator } from '../../Validators/email';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 
 /**
@@ -17,19 +20,21 @@ import { AuthenticationProvider } from '../../providers/authentication/authentic
   templateUrl: 'signup.html',
 })
 export class SignupPage {
+  @ViewChild(Slides) slides: Slides;
 
   form: FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,fb: FormBuilder) {
     this.form = fb.group({
       fullname: ['', Validators.compose([Validators.required])],
-      // matricule: [''],
-			// email: ['', Validators.compose([Validators.required, EmailValidator.isValidMailFormat])],
+      username: ['', Validators.compose([Validators.required])],
+      number: ['', Validators.compose([Validators.required])],  
+      skill: ['', Validators.compose([Validators.required])],
+      location: ['', Validators.compose([Validators.required])],
+			email: ['', Validators.compose([Validators.required, EmailValidator.isValidMailFormat])],
 			password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
 
 		});
-
-
 
   }
 
@@ -37,10 +42,19 @@ export class SignupPage {
     console.log('ionViewDidLoad SignupPage');
   }
 
+  goToSlide() {
+   this.slides.slideTo(2, 500);
+ }
+
+  openLogin()
+  {
+    this.navCtrl.setRoot(LoginPage);
+  }
+
 
 
   goToInfo(){
-    this.navCtrl.push(PersonalinfoPage);
+    this.navCtrl.setRoot(PersonalinfoPage);
   }
   // signupUser(){
   //   if (!this.form.valid){

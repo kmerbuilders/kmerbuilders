@@ -7,55 +7,104 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>signup</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <div text center>
-  <form (ngSubmit)="signupUser()" [formGroup]="form">
-    <ion-list inset>
+  <ion-slides>
+  <ion-slide>
+    <div text center>
+      <h2>Create an Account</h2>
+    <form (ngSubmit)="signupUser()" [formGroup]="form">
+      <ion-list inset>
 
-      <ion-item>
-        <ion-input type="text" placeholder="User Name" formControlName="fullname" required></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-input type="text" placeholder="User Name" formControlName="username" required></ion-input>
+        </ion-item>
 
-      <div>
-        <div>User name</div>
+        <ion-item>
+          <ion-input type="password" placeholder="Password" formControlName="password" required></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-input type="password" placeholder="Repeat Password" formControlName="password" required></ion-input>
+        </ion-item>
+
+
+      </ion-list>
+      </form>
+
+      <div padding-horizontal>
+        <button ion-button full round (click)="goToSlide()">NEXT</button>
       </div>
 
-      <ion-item>
-        <ion-input type="password" placeholder="Password" formControlName="password" required></ion-input>
-      </ion-item>
 
-      <div>
-        <div>It should be at least 6 characters</div>
+    <ion-footer>
+      <ion-segment>
+        <ion-segment-button value="signup">
+         Already have an Account?
+        </ion-segment-button>
+        <ion-segment-button value="login" (click)="openLogin()">
+          Login
+        </ion-segment-button>
+      </ion-segment>
+
+  </ion-footer>
+
+  </div>
+  </ion-slide>
+
+  <!--Slide 2-->
+
+  <ion-slide>
+    <form (ngSubmit)="signupUser()" [formGroup]="form">
+      <ion-list inset>
+
+        <ion-item>
+          <ion-input type="text" placeholder="Name" formControlName="fullname" required></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-input type="tel" placeholder="Phone Number" formControlName="number"></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-input type="email" placeholder="Email" formControlName="email" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="text" placeholder="Skill" formControlName="skill" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="text" placeholder="Location" formControlName="location" required></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+             <ion-textarea placeholder="About Me"></ion-textarea>
+        </ion-item>
+
+
+      </ion-list>
+
+      <div padding-horizontal>
+        <div class="form-error">{{signupError}}</div>
+
+        <button ion-button full type="submit" [disabled]="!form.valid">Sign up</button>
       </div>
-
-      <ion-item>
-        <ion-input type="password" placeholder="Repeat Password" formControlName="password" required></ion-input>
-      </ion-item>
-
-      <div>
-        <div>It should be at least 6 characters</div>
-      </div>
-
-
-    </ion-list>
     </form>
 
-    <div padding-horizontal>
-      <button ion-button full (click)="goToInfo()">NEXT</button>
-    </div>
+  </ion-slide>
 
+</ion-slides>
 
-  <ion-footer>
-  <ion-toolbar>
-    <ion-title>Already have an account?</ion-title>
-  </ion-toolbar>
-</ion-footer>
-
-</div>
 </ion-content>

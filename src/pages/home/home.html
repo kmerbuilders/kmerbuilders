@@ -1,8 +1,8 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
   </ion-navbar>
 </ion-header>
 
@@ -11,19 +11,8 @@
   <h2>Kmer Builders</h2>
 
 <ion-list>
-  <ion-searchbar (ionInput)="getItems($event)">Technician
+  <ion-searchbar (ionInput)="getItems($event)">
   </ion-searchbar>
-  <ion-select [(ngModel)]="gaming">
-      <ion-option value="nes">NES</ion-option>
-      <ion-option value="n64">Nintendo64</ion-option>
-      <ion-option value="ps">PlayStation</ion-option>
-      <ion-option value="genesis">Sega Genesis</ion-option>
-      <ion-option value="saturn">Sega Saturn</ion-option>
-      <ion-option value="snes">SNES</ion-option>
-    </ion-select>
-  <ion-item *ngFor="let item of items">
-    {{ item }}
-  </ion-item>
 
 </ion-list>
 
@@ -32,18 +21,25 @@
 <p>Browse Technicians</p>
 
 <p>Are you a Technician?</p>
+</div>
 
 <ion-footer>
 <ion-toolbar>
-  <ion-tabs>
-      <ion-tab tabIcon="star" tabTitle="Create an Account" [root]="tab2"></ion-tab>
-      <ion-tab tabIcon="heart" tabTitle="Login" [root]="tab1"></ion-tab>
 
-    </ion-tabs>`
+
+   <ion-segment>
+     <ion-segment-button value="signup" (click)="openSignup()">
+      Create an account
+     </ion-segment-button>
+     <ion-segment-button value="login" (click)="openLogin()">
+       Login
+     </ion-segment-button>
+   </ion-segment>
+
 </ion-toolbar>
 </ion-footer>
 
 
-</div>
+
 
 </ion-content>
