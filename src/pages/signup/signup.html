@@ -16,11 +16,12 @@
 
 
 <ion-content padding>
+  <h2>Create an Account</h2>
+
   <ion-slides>
   <ion-slide>
+    <form [formGroup]="form">
     <div text center>
-      <h2>Create an Account</h2>
-    <form (ngSubmit)="signupUser()" [formGroup]="form">
       <ion-list inset>
 
         <ion-item>
@@ -38,7 +39,7 @@
 
 
       </ion-list>
-      </form>
+
 
       <div padding-horizontal>
         <button ion-button full round (click)="goToSlide()">NEXT</button>
@@ -58,12 +59,14 @@
   </ion-footer>
 
   </div>
+</form>
   </ion-slide>
 
   <!--Slide 2-->
 
   <ion-slide>
-    <form (ngSubmit)="signupUser()" [formGroup]="form">
+    <form  [formGroup]="form">
+
       <ion-list inset>
 
         <ion-item>
@@ -95,21 +98,22 @@
 
         <ion-item>
              <ion-label>I have read and understood,therefore agree to the <a href="">Terms of Service</a> and <a href="">Privacy Policy Agreement</a></ion-label>
-             <ion-checkbox [(ngModel)]="agreement" disabled="true"></ion-checkbox>
+             <ion-checkbox  disabled="true" required></ion-checkbox>
         </ion-item>
 
 
       </ion-list>
 
-      <div padding-horizontal>
-        <div class="form-error">{{signupError}}</div>
+</form>
 
-        <button ion-button full type="submit" [disabled]="!form.valid">Sign up</button>
-      </div>
-    </form>
+<div padding-horizontal>
+  <div class="form-error">{{signupError}}</div>
 
+  <button ion-button full type="submit" [disabled]="!form.valid">Sign up</button>
+</div>
   </ion-slide>
 
 </ion-slides>
+
 
 </ion-content>
