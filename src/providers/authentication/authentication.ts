@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { auth } from 'firebase/app';
+import { Firebase } from '@ionic-native/firebase';
 
 /*
   Generated class for the AuthenticationProvider provider.
@@ -14,9 +15,13 @@ interface User {
   uid: string;
   email: string;
   password:string;
-  photoURL?: string;
+  username: string;
   fullname: string;
-  matricule: string;
+   number: string;
+   skill: string;
+   location: string;
+   aboutme: string;
+
 }
 
 @Injectable()
@@ -26,20 +31,24 @@ export class AuthenticationProvider {
   public fireAuth:firebase.auth.Auth;
   public userProfileRef:firebase.database.Reference;
 
-  constructor(public afAuth: AngularFireAuth,public http: HttpClient) {
+  constructor(public afAuth: AngularFireAuth,public http: HttpClient,private firebase: Firebase,private auth: AuthenticationProvider) {
 
     this.fireAuth = firebase.auth();
     this.userProfileRef = firebase.database().ref('userProfile');
     console.log('Hello AuthenticationProvider Provider');
   }
 
-  signupUser(fullname: string, matricule: string, email: string, password: string ): Promise<void> {
+  signupUser(fullname: string, username: string, email: string, password: string,number: string, skill: string, location: string,aboutme: string): Promise<void> {
       return this.fireAuth.createUserWithEmailAndPassword(email, password).then( newUser => {
         this.userProfileRef.child(newUser.user.uid).push({
           fullname: fullname,
-          matricule: matricule,
+          username: username,
           email: email,
-          password: password
+          password: password,
+          number: number,
+          skill: skill,
+          location: location,
+          aboutme: aboutme
         });
       });
     }

@@ -47,6 +47,7 @@
 
 
     <ion-footer>
+
       <ion-segment>
         <ion-segment-button value="signup">
          Already have an Account?
@@ -65,35 +66,42 @@
   <!--Slide 2-->
 
   <ion-slide>
-    <form  [formGroup]="form">
+    <form (ngSubmit)="signupUser()" [formGroup]="form">
 
       <ion-list inset>
 
         <ion-item>
+          <ion-icon name="perso,"></ion-icon>
           <ion-input type="text" placeholder="Name" formControlName="fullname" required></ion-input>
         </ion-item>
 
 
         <ion-item>
+          <ion-icon name="call"></ion-icon>
           <ion-input type="tel" placeholder="Phone Number" formControlName="number"></ion-input>
         </ion-item>
 
 
         <ion-item>
+          <ion-icon name="mail"></ion-icon>
           <ion-input type="email" placeholder="Email" formControlName="email" required></ion-input>
         </ion-item>
 
         <ion-item>
+          <ion-icon name="medkit"></ion-icon>
           <ion-input type="text" placeholder="Skill" formControlName="skill" required></ion-input>
         </ion-item>
 
         <ion-item>
+          <ion-icon name="poduim"></ion-icon>
           <ion-input type="text" placeholder="Location" formControlName="location" required></ion-input>
+          <ion-icon name="pin"></ion-icon>
         </ion-item>
 
 
         <ion-item>
-             <ion-textarea placeholder="About Me"></ion-textarea>
+             <ion-icon name="information"></ion-icon>
+             <ion-input type="text" placeholder="About Me"  formControlName="aboutme" required></ion-input>
         </ion-item>
 
         <ion-item>
@@ -109,7 +117,7 @@
 <div padding-horizontal>
   <div class="form-error">{{signupError}}</div>
 
-  <button ion-button full type="submit" [disabled]="!form.valid" (click)="signupUser'">Sign up</button>
+  <button ion-button full type="submit" [disabled]="!form.valid">Sign up</button>
 </div>
   </ion-slide>
 
