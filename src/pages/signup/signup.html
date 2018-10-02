@@ -20,7 +20,7 @@
 
   <ion-slides>
   <ion-slide>
-    <form [formGroup]="form">
+    <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
     <div text center>
       <ion-list inset>
 
@@ -42,7 +42,10 @@
 
 
       <div padding-horizontal>
-        <button ion-button full round (click)="goToSlide()">NEXT</button>
+
+    			<div class="form-error">{{signupError}}</div>
+
+        <button ion-button full round  type="submit" [disabled]="!loginForm.valid">NEXT</button>
       </div>
 
 
@@ -66,7 +69,7 @@
   <!--Slide 2-->
 
   <ion-slide>
-    <form (ngSubmit)="signupUser()" [formGroup]="form">
+    <form (ngSubmit)="signupUser()" [formGroup]="signupForm">
 
       <ion-list inset>
 
@@ -82,10 +85,10 @@
         </ion-item>
 
 
-        <ion-item>
+        <!-- <ion-item>
           <ion-icon name="mail"></ion-icon>
           <ion-input type="email" placeholder="Email" formControlName="email" required></ion-input>
-        </ion-item>
+        </ion-item> -->
 
         <ion-item>
           <ion-icon name="medkit"></ion-icon>
@@ -112,13 +115,15 @@
 
       </ion-list>
 
+      <div padding-horizontal>
+        <div class="form-error">{{signupError}}</div>
+
+        <button ion-button full type="submit" [disabled]="!signupForm.valid">Sign up</button>
+      </div>
+
 </form>
 
-<div padding-horizontal>
-  <div class="form-error">{{signupError}}</div>
 
-  <button ion-button full type="submit" [disabled]="!form.valid">Sign up</button>
-</div>
   </ion-slide>
 
 </ion-slides>

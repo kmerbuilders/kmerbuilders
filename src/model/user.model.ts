@@ -1,9 +1,10 @@
-export interface UserModel {
-    key?: string;
-    email: string;
-    password: string;
-    matricule: string;
-    status: string ;
-    level: string ;
-    fullname:string;
+export interface Profile {
+    firstName:string,
+    lastName:string,
+    picture:string
+}
+
+export interface User{
+    email:string,
+    password:string
 }
