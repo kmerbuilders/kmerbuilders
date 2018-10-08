@@ -47,7 +47,17 @@ export class AuthenticationProvider {
 
 
     loginUser(newEmail: string, newPassword: string): Promise<any> {
-      return this.afAuth.auth.signInWithEmailAndPassword(newEmail, newPassword);
+      return this.afAuth.auth.signInWithEmailAndPassword(newEmail, newPassword)
+      .then(newUserCredential => {
+        firebase
+          .database()
+          .ref(`/userProfile/${newUserCredential.user.uid}`);
+          //.set(email);
+      })
+      .catch(error => {
+        console.error(error);
+        throw new Error(error);
+      });
     }
 
     resetPassword(email: string): Promise<void> {
@@ -63,19 +73,20 @@ export class AuthenticationProvider {
   return firebase.auth().signOut();
 }
 
-signupUser(email: string, password: string): Promise<any> {
-  return firebase
-    .auth()
-    .createUserWithEmailAndPassword(email, password)
-    .then(newUserCredential => {
+signupUser(fullname: string, number: string,skill: string, location: string,aboutme: string): Promise<any> {
+  const userId: string = firebase.auth().currentUser.uid;
       firebase
         .database()
-        .ref(`/userProfile/${newUserCredential.user.uid}/email`)
-        .set(email);
-    })
-    .catch(error => {
+        .ref(`/userProfile/${userId}`).set({
+    Name: fullname,
+    Number: number,
+    skill: skill,
+    location : location,
+    resume: aboutme
+  }).catch(error => {
       console.error(error);
       throw new Error(error);
     });
 }
+
 }

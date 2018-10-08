@@ -86,10 +86,10 @@ loginUser(){
   if (!this.loginForm.valid){
     console.log(this.loginForm.value);
   } else {
-    this.authData.signupUser(this.loginForm.value.username, this.loginForm.value.password)
+    this.authData.loginUser(this.loginForm.value.username, this.loginForm.value.password)
     .then( authData => {
       this.goToSlide();
-    });  
+    });
 
 
   }
@@ -99,7 +99,8 @@ signupUser(){
   if (!this.signupForm.valid){
     console.log(this.signupForm.value);
   } else {
-    this.authData.signupUser(this.loginForm.value.email, this.loginForm.value.password)
+    this.authData.signupUser(this.signupForm.value.fullname, this.signupForm.value.number,
+      this.signupForm.value.skill,this.signupForm.value.location,this.signupForm.value.aboutme)
     .then( authData => {
       this.navCtrl.setRoot('HomePage');
     }, error => {
