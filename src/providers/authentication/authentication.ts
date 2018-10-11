@@ -73,7 +73,7 @@ export class AuthenticationProvider {
   return firebase.auth().signOut();
 }
 
-signupUser(fullname: string, number: string,skill: string, location: string,aboutme: string): Promise<any> {
+signupUserss(fullname: string, number: string,skill: string, location: string,aboutme: string): Promise<any> {
   const userId: string = firebase.auth().currentUser.uid;
       firebase
         .database()
@@ -87,6 +87,21 @@ signupUser(fullname: string, number: string,skill: string, location: string,abou
       console.error(error);
       throw new Error(error);
     });
+}
+
+signupUsers(newEmail: string, newPassword: string): Promise<any> {
+  return this.afAuth.auth
+   .createUserWithEmailAndPassword(newEmail, newPassword)
+   .then( newUser => {
+     firebase
+     .database()
+     .ref('/userProfile/')
+     .set({ email: newEmail})
+     .catch(error => {
+      console.error(error);
+      throw new Error(error);
+    });
+});
 }
 
 }

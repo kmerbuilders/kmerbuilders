@@ -6,5 +6,10 @@ export interface Profile {
 
 export interface User{
     email:string,
-    password:string
+    password:string,
+    fullname:string,
+    number:string,
+    skill:string,
+    location:string,
+    aboutme:string
 }

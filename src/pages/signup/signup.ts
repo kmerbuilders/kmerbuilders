@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams,AlertController,LoadingController,Loading,Slides } from 'ionic-angular';
 
 import { LoginPage } from '../login/login';
+import { HomePage } from '../home/home';
+//import { ResetPasswordPage } from '../resetPassword/resetPassword';
 import { EmailValidator } from '../../Validators/email';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { UserProvider } from '../../providers/user/user';
@@ -75,18 +77,35 @@ export class SignupPage {
     this.navCtrl.setRoot(LoginPage);
   }
 
+  openHomepage(){
+    this.navCtrl.setRoot(HomePage);
+  }
+
 
 
   goToResetPassword(){
-  this.navCtrl.push('ResetPasswordPage');
+  this.navCtrl.push(ResetPasswordPage);
 }
+
+
+// loginUser(){
+//   if (!this.loginForm.valid){
+//     console.log(this.loginForm.value);
+//   } else {
+//     this.authData.loginUser(this.loginForm.value.username, this.loginForm.value.password)
+//     .then( authData => {
+//       this.goToSlide();
+//     });
+//
+//
+//   }
 
 
 loginUser(){
   if (!this.loginForm.valid){
     console.log(this.loginForm.value);
   } else {
-    this.authData.loginUser(this.loginForm.value.username, this.loginForm.value.password)
+    this.authData.signupUsers(this.loginForm.value.username, this.loginForm.value.password)
     .then( authData => {
       this.goToSlide();
     });
@@ -99,11 +118,11 @@ signupUser(){
   if (!this.signupForm.valid){
     console.log(this.signupForm.value);
   } else {
-    this.authData.signupUser(this.signupForm.value.fullname, this.signupForm.value.number,
+    this.authData.signupUserss(this.signupForm.value.fullname, this.signupForm.value.number,
       this.signupForm.value.skill,this.signupForm.value.location,this.signupForm.value.aboutme)
     .then( authData => {
-      this.navCtrl.setRoot('HomePage');
-    }, error => {
+      this.openHomepage();
+    }).catch( error => {
       this.loading.dismiss().then( () => {
         let alert = this.alertCtrl.create({
           message: error.message,
