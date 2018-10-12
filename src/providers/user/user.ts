@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { UserModel } from '../../../model/user.model';
+import { UserModel } from '../../model/user.model';
 
 
 /*

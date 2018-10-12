@@ -30,7 +30,7 @@ interface User {
 @Injectable()
 export class AuthenticationProvider {
 
-  // private user: firebase.User;
+   public user: firebase.User;
   // public fireAuth:firebase.auth.Auth;
   // public userProfileRef:firebase.database.Reference;
 
@@ -74,10 +74,11 @@ export class AuthenticationProvider {
 }
 
 signupUserss(fullname: string, number: string,skill: string, location: string,aboutme: string): Promise<any> {
-  const userId: string = firebase.auth().currentUser.uid;
+//  const userId: string = firebase.auth().currentUser.uid;
+
       firebase
         .database()
-        .ref(`/userProfile/${userId}`).set({
+        .ref(`/userProfile/`).push({
     Name: fullname,
     Number: number,
     skill: skill,
@@ -87,16 +88,19 @@ signupUserss(fullname: string, number: string,skill: string, location: string,ab
       console.error(error);
       throw new Error(error);
     });
+
+return firebase.auth().updateCurrentUser(firebase.auth().currentUser);
 }
 
 signupUsers(newEmail: string, newPassword: string): Promise<any> {
+
   return this.afAuth.auth
    .createUserWithEmailAndPassword(newEmail, newPassword)
    .then( newUser => {
      firebase
      .database()
-     .ref('/userProfile/')
-     .set({ email: newEmail})
+     .ref('/userProfile/').child(newUser.user.uid)
+     .push({ email: newEmail})
      .catch(error => {
       console.error(error);
       throw new Error(error);

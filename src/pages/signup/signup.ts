@@ -83,9 +83,9 @@ export class SignupPage {
 
 
 
-  goToResetPassword(){
-  this.navCtrl.push(ResetPasswordPage);
-}
+//   goToResetPassword(){
+//   this.navCtrl.push(ResetPasswordPage);
+// }
 
 
 // loginUser(){
