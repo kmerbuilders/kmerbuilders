@@ -1,7 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
+<<<<<<< HEAD
 import { UserModel } from '.././model/user.model';
+=======
+import { UserModel } from '../../model/user.model';
+>>>>>>> 29e63f6f8d578da9e0020a2df2960678018dceff
 
 
 /*

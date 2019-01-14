@@ -7,52 +7,17 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>personalinfo</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Welcome
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <form (ngSubmit)="signupUser()" [formGroup]="form">
-    <ion-list inset>
-
-      <ion-item>
-        <ion-input type="text" placeholder="Name" formControlName="fullname" required></ion-input>
-      </ion-item>
-
-      <div>
-        <div>Name</div>
-      </div>
-
-      <ion-item>
-        <ion-input type="number" placeholder="Phone Number" formControlName="matricule"></ion-input>
-      </ion-item>
-
-      <div>
-        <div>Fill in your Phone Number</div>
-      </div>
-
-
-      <ion-item>
-        <ion-input type="text" placeholder="Email" formControlName="email" required></ion-input>
-      </ion-item>
-
-      <div>
-        <div>It should be a valid email</div>
-      </div>
-
-
-
-
-    </ion-list>
-
-
-    <div padding-horizontal>
-      <div class="form-error">{{signupError}}</div>
-
-      <button ion-button full type="submit" [disabled]="!form.valid">Sign up</button>
-    </div>
-  </form>
 
 </ion-content>

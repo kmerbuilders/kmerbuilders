@@ -4,18 +4,30 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
+
+
 import { SplashscreenPage } from '../pages/splashscreen/splashscreen';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
     @ViewChild(Nav) nav: Nav;
-  rootPage=HomePage;
+  rootPage= HomePage;
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform,public menu: MenuController, public statusBar: StatusBar, public splashScreen: SplashScreen,public modalCtrl: ModalController) {
+  constructor(public platform: Platform,afAuth: AngularFireAuth,public menu: MenuController, public statusBar: StatusBar, public splashScreen: SplashScreen,public modalCtrl: ModalController) {
     this.initializeApp();
+
+    const authObserver = afAuth.authState.subscribe(user => {
+      if (user) {
+        this.rootPage = HomePage;
+        authObserver.unsubscribe();
+      } else {
+        authObserver.unsubscribe();
+      }
+    });
 
     // set our app's pages
     this.pages = [
@@ -50,4 +62,6 @@ openPage(page) {
 //   this.auth.signOut();
 //   this.nav.setRoot(HomePage);
 // }
+
+
 }

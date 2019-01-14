@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IonicPage, NavController, NavParams,AlertController,LoadingController,Loading  } from 'ionic-angular';
+import { AuthenticationProvider } from '../../providers/authentication/authentication';
+import { EmailValidator } from '../../Validators/email';
 /**
  * Generated class for the PersonalinfoPage page.
  *
@@ -15,7 +17,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PersonalinfoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  form: FormGroup;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,fb: FormBuilder) {
+    this.form = fb.group({
+      fullname: ['', Validators.compose([Validators.required])],
+      tel: ['', Validators.compose([Validators.required])],
+      skill: ['', Validators.compose([Validators.required])],
+      location: ['', Validators.compose([Validators.required])],
+			email: ['', Validators.compose([Validators.required, EmailValidator.isValidMailFormat])],
+			password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
+
+		});
+
+
+
   }
 
   ionViewDidLoad() {
